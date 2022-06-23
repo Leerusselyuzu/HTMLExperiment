@@ -72,7 +72,7 @@ const inputGatherer = function() {
         setTimeout(submitValues);
     };
 
-
+ //Pass toggle target and select next input to include or exclude the value from runway calculations
 function optionSelected (me) {
     let nextSiblingStart = me;
     getNextSiblingTest(nextSiblingStart);
@@ -89,24 +89,29 @@ function getNextSiblingTest(nextSiblingStart) {
         }
     };
 
-    const result = document.querySelector('.result');
-
+    // dialog show / hide functionality 
     const dialog = document.querySelector('.example-dialog');
     dialog.addEventListener('close', () => {
-        result.textContent = 'dialog was closed';
+        // this is where a function should go to reset the input values to empty when closed
     });
     
     const openDialog = document.querySelector('.open-dialog');
     openDialog.addEventListener('click', () => {
       if (typeof dialog.showModal === 'function') {
           dialog.showModal();
-          result.textContent = '';
-      } else {
-          result.textContent = 'The dialog API is not supported by this browser';
-      }
-    });
+          dialog.style.display = 'flex';  
+            console.log('I fired')      
+    }});
     
+    const addInputButton = document.querySelector('.addInput');
+    addInputButton.addEventListener('click', () => {
+        dialog.close();
+        dialog.style.display = 'none'; 
+    });
+
     const closeButton = document.querySelector('.close');
     closeButton.addEventListener('click', () => {
+        document.querySelectorAll('dialogInput').value = '0';
         dialog.close();
+        dialog.style.display = 'none'; 
     });
