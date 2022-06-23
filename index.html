@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Runway Calculator</title>
+</head>
+<body>
+    <main id="test">
+ 
+        <div class="runwayCounter">
+            <h1 id="months">Enter your details to calculate your runway!</h1>
+            <p>Your current assets will run out in: with no additional contributions</p>
+        </div>
+
+        <div class="totalsBoxes">
+            <div class="expensesTotalBox totalBox">
+                <span class="material-icons">shopping_cart</span>
+                <h2 id="expenseDisplay"><span>£</span>0</h2>
+                <p>Expenses Total</p>
+            </div>
+            <div class="assetsTotalBox totalBox">
+                <span class="material-icons">savings</span>
+                <h2 id="assetsDisplay"><span>£</span>0</h2>
+                <p>Assets Total</p>
+            </div>
+            <div class="incomeTotalBox totalBox">
+                <span class="material-icons">attach_money</span>
+                <h2 id="incomeDisplay"><span>£</span>0</h2>
+                <p>Income p/m</p>
+            </div>
+        </div>
+
+        <form class="userInputs">
+            <div class="inputControls">
+                <button type="button" class="mainAction open-dialog">Add New Entry</button>
+                <button type="button" class="secondaryAction">Delete</button>
+            </div>
+            <div class="expenses">
+                <h2>Expenses</h2>
+                <div class="inputCard">
+                    <div class="inputCardSwitch">
+                    <label class="switch">
+                        <input type="checkbox" class="rent" checked onclick="return optionSelected(this)">
+                        <span class="slider round"></span>
+                    </label>
+                    </div>
+                    <div class="inputCardData">
+                        <label for="expenses">Rent</label>
+                        <input type="text" id="expenses" name="included" placeholder="£0" class="rentInput expenseInput">
+                    </div>
+                </div>
+                <div class="inputCard">
+                    <div class="inputCardSwitch">
+                        <label class="switch">
+                            <input type="checkbox" class="food" checked onclick="return optionSelected(this)">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="inputCardData">
+                        <label for="food">Food</label>
+                        <input type="text" id="food" name="included" placeholder="£0" class="foodInput expenseInput">
+                    </div>
+                </div>
+                <div class="inputCard">
+                    <div class="inputCardSwitch">
+                        <label class="switch">
+                            <input type="checkbox" class="council" checked onclick="return optionSelected(this)">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="inputCardData">
+                        <label for="councilTax">Council Tax</label>
+                        <input type="text" id="councilTax" name="included" placeholder="£0" class="councilInput expenseInput">
+                    </div>
+                </div>
+                <div class="inputCard">
+                    <div  class="inputCardSwitch">
+                        <label class="switch">
+                            <input type="checkbox" class="haircut" checked onclick="return optionSelected(this)">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="inputCardData">
+                        <label for="haircut">Haircut</label>
+                        <input type="text" id="haircut" name="included" checked placeholder="£0" class="haircutInput expenseInput">
+                    </div>
+                </div>
+                <div class="inputCard">
+                    <div class="inputCardSwitch" >
+                        <label class="switch">
+                            <input type="checkbox" class="subscriptions" checked onclick="return optionSelected(this)">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="inputCardData">
+                        <label for="subscriptions">Subscriptions</label>
+                        <input type="text" id="subscriptions" name="included" checked placeholder="£0" class="subscriptionsInput expenseInput">
+                    </div>
+                </div>
+                <div class="inputCard">
+                    <div class="inputCardSwitch">
+                        <label class="switch">
+                            <input type="checkbox" class="fun" checked onclick="return optionSelected(this)">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="inputCardData">
+                        <label for="funFund">Fun Fund</label>
+                        <input type="text" id="funFund" name="included" placeholder="£0" class="funInput expenseInput">
+                    </div>
+                </div>
+                <div class="inputCard">
+                    <div class="inputCardSwitch">
+                        <label class="switch">
+                            <input type="checkbox" class="holiday" checked onclick="return optionSelected(this)">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="inputCardData">
+                        <label for="holidaySavings">Holiday Savings</label>
+                        <input type="holidaySavings" id="holidaySavings" name="included" placeholder="£0" class="holidayInput expenseInput">
+                    </div>
+                </div>
+                <div class="inputCard">
+                    <div class="inputCardSwitch">
+                        <label class="switch">
+                            <input type="checkbox" class="gifts" checked onclick="return optionSelected(this)">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="inputCardData">
+                        <label for="gifts">Gifts</label>
+                        <input type="text" id="gifts" name="included" placeholder="£0" class="giftsInput expenseInput">
+                    </div>
+                </div>
+            </div>
+            <div class="assets">
+                <h2>Assets</h2>
+                <div class="inputCard">
+                    <div class="inputCardSwitch">
+                        <label class="switch">
+                            <input type="checkbox" class="cash" checked onclick="return optionSelected(this)">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="inputCardData">
+                        <label for="expenses">Cash</label>
+                        <input type="text" id="assets" name="included" placeholder="£0" class="cashInput assetInput">
+                    </div>
+                </div>
+                <div class="inputCard">
+                    <div class="inputCardSwitch">
+                        <label class="switch">
+                            <input type="checkbox" class="businessAccount" checked onclick="return optionSelected(this)">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="inputCardData">
+                        <label for="expenses">Business Account</label>
+                        <input type="text" id="businessAccount" name="included" placeholder="£0" class="businessAccountInput assetInput">
+                    </div>
+                </div>
+                <div class="inputCard">
+                    <div class="inputCardSwitch">
+                        <label class="switch">
+                            <input type="checkbox" class="stocksISA" checked onclick="return optionSelected(this)">
+                            <span class="slider round"></span>
+                        </label>
+                        </div>
+                    <div class="inputCardData" >
+                        <label for="expenses">Stocks ISA</label>
+                        <input type="text" id="stocksISA" name="included" placeholder="£0" class="stocksISAInput assetInput">
+                    </div>
+                </div>
+                <div class="inputCard">
+                    <div class="inputCardSwitch">
+                        <label class="switch">
+                            <input type="checkbox" class="lisa" checked onclick="return optionSelected(this)">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="inputCardData">
+                        <label for="expenses">LISA</label>
+                        <input type="text" id="LISA" name="included" placeholder="£0" class="lisaInput assetInput">
+                    </div>
+                </div>
+                <div class="inputCard">
+                    <div class="inputCardSwitch">
+                        <label class="switch">
+                            <input type="checkbox" class="crypto" checked onclick="return optionSelected(this)">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <div class="inputCardData">
+                        <label for="expenses">Crypto</label>
+                        <input type="text" id="crypto" name="included" placeholder="£0" class="cryptoInput assetInput">
+                    </div>
+                </div>
+            </div>
+            <div class="income">
+                <h2>Income</h2>
+                <div class="inputCard">
+                    <div class="inputCardSwitch">
+                        <label class="switch">
+                            <input type="checkbox" class="incomepm" checked onclick="return optionSelected(this)">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="inputCardData">
+                        <label for="expenses">Income p/m</label>
+                        <input type="text" id="income" name="included" placeholder="£0" class="incomepmInput incomeInput">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <button id="button" class="mainAction submit">Submit</button>
+        <div id="result"></div>
+
+        <!-- dialog with form to add in new input fiel -->
+
+        <dialog class="example-dialog">
+            <form class="dialogForm" method="dialog">
+                <label for="type">Type:</label>
+                <select name="type">
+                    <option value="expense">Expense</option>
+                    <option value="asset">Asset</option>
+                    <option value="income">Income</option>
+                </select>
+                <label for="name" >Name:</label>
+                <input type="text" name="name" class="dialogInput"/>
+                <label for="amount">Amount:</label>
+                <input type="text" name="amount" class="dialogInput"/>
+                <div class="dialog-controls">
+                    <button class="mainAction">Submit</button>
+                    <button class="close secondaryAction" type="reset">Close</button>
+                </div>
+            </form>
+            
+        </dialog>
+
+
+        <div class="result"></div>
+
+    
+       
+    
+    <script src="./index.js"></script>
+</body>
+</html>
