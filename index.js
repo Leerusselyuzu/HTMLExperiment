@@ -128,8 +128,6 @@ function getNextSiblingTest(nextSiblingStart) {
             newInputCard.setAttribute('class', 'inputCard');
 
             const targetDiv = document.getElementById(this.type+'List');
-            console.log(targetDiv);
-
             targetDiv.appendChild(newInputCard);
         }
     }
