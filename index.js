@@ -93,6 +93,8 @@ function getNextSiblingTest(nextSiblingStart) {
     const dialog = document.querySelector('.example-dialog');
     dialog.addEventListener('close', () => {
         // this is where a function should go to reset the input values to empty when closed
+        dialog.value = '0';
+        dialog.style.display = 'none';
     });
     
     const openDialog = document.querySelector('.open-dialog');
@@ -100,18 +102,50 @@ function getNextSiblingTest(nextSiblingStart) {
       if (typeof dialog.showModal === 'function') {
           dialog.showModal();
           dialog.style.display = 'flex';  
-            console.log('I fired')      
     }});
     
     const addInputButton = document.querySelector('.addInput');
     addInputButton.addEventListener('click', () => {
+        let select = document.getElementById('typeSelector');
+        let selectedValue = select.options[select.selectedIndex].value;
+        let newInputCard = new createInput(selectedValue, dialogNameInput.value, dialogAmountInput.value);
+        newInputCard.addNewInput();
         dialog.close();
-        dialog.style.display = 'none'; 
     });
 
     const closeButton = document.querySelector('.close');
     closeButton.addEventListener('click', () => {
-        document.querySelectorAll('dialogInput').value = '0';
         dialog.close();
-        dialog.style.display = 'none'; 
     });
+
+
+    const createInputPrototype = {
+        addNewInput() {
+
+            const newInputCard = document.createElement("div");
+            newInputCard.setAttribute('class', 'inputCard');
+            newInputCard.innerHTML = `<div class="inputCardSwitch"><label class="switch"><input type="checkbox" class="${this.name}" checked onclick="return optionSelected(this)"><span class="slider round"></span></label></div><div class="inputCardData"><label for="expenses">${this.name}</label><input type="text" id="income" name="included" placeholder="£${this.amount}" class="${this.name}Input ${this.type}Input" value="${this.amount}"></div>`;
+            newInputCard.setAttribute('class', 'inputCard');
+            //const newContent = document.createTextNode("Look at me you fool I have been inserted by your function");
+            //newInputCard.appendChild(newContent);
+            //const newinputCardSwitch = document.createElement("div");
+
+            const targetDiv = document.getElementById(this.type+'List');
+            console.log(targetDiv);
+
+            //document.body.appendChild(newInputCard, targetDiv);
+            targetDiv.appendChild(newInputCard);
+        }
+    }
+
+    function createInput(type, name, amount) {
+        this.type = type;
+        this.name = name;
+        this.amount = amount;
+        //console.log(this)
+        //createInput.addNewInput();
+    }
+
+    createInput.prototype = createInputPrototype;
+    createInput.prototype.constructor = createInput;
+

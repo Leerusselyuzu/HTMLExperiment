@@ -41,7 +41,7 @@
                 <button type="button" class="mainAction open-dialog">Add New Entry</button>
                 <button type="button" class="secondaryAction">Delete</button>
             </div>
-            <div class="expenses">
+            <div class="expenses" id="expenseList">
                 <h2>Expenses</h2>
                 <div class="inputCard">
                     <div class="inputCardSwitch">
@@ -140,7 +140,7 @@
                     </div>
                 </div>
             </div>
-            <div class="assets">
+            <div class="assets" id="assetList">
                 <h2>Assets</h2>
                 <div class="inputCard">
                     <div class="inputCardSwitch">
@@ -204,7 +204,7 @@
                     </div>
                 </div>
             </div>
-            <div class="income">
+            <div class="income" id="incomeList">
                 <h2>Income</h2>
                 <div class="inputCard">
                     <div class="inputCardSwitch">
@@ -234,15 +234,15 @@
         <dialog class="example-dialog">
             <form class="dialogForm" method="dialog">
                 <label for="type">Type:</label>
-                <select name="type">
+                <select name="type" id="typeSelector">
                     <option value="expense">Expense</option>
                     <option value="asset">Asset</option>
                     <option value="income">Income</option>
                 </select>
                 <label for="name" >Name:</label>
-                <input type="text" name="name" class="dialogInput"/>
+                <input type="text" name="name" class="dialogInput" id="dialogNameInput"/>
                 <label for="amount">Amount:</label>
-                <input type="text" name="amount" class="dialogInput"/>
+                <input type="text" name="amount" class="dialogInput" id="dialogAmountInput"/>
                 <div class="dialog-controls">
                     <button class="mainAction addInput">Submit</button>
                     <button class="close secondaryAction" type="reset">Close</button>
