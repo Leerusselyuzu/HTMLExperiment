@@ -126,14 +126,10 @@ function getNextSiblingTest(nextSiblingStart) {
             newInputCard.setAttribute('class', 'inputCard');
             newInputCard.innerHTML = `<div class="inputCardSwitch"><label class="switch"><input type="checkbox" class="${this.name}" checked onclick="return optionSelected(this)"><span class="slider round"></span></label></div><div class="inputCardData"><label for="expenses">${this.name}</label><input type="text" id="income" name="included" placeholder="£${this.amount}" class="${this.name}Input ${this.type}Input" value="${this.amount}"></div>`;
             newInputCard.setAttribute('class', 'inputCard');
-            //const newContent = document.createTextNode("Look at me you fool I have been inserted by your function");
-            //newInputCard.appendChild(newContent);
-            //const newinputCardSwitch = document.createElement("div");
 
             const targetDiv = document.getElementById(this.type+'List');
             console.log(targetDiv);
 
-            //document.body.appendChild(newInputCard, targetDiv);
             targetDiv.appendChild(newInputCard);
         }
     }
@@ -142,8 +138,6 @@ function getNextSiblingTest(nextSiblingStart) {
         this.type = type;
         this.name = name;
         this.amount = amount;
-        //console.log(this)
-        //createInput.addNewInput();
     }
 
     createInput.prototype = createInputPrototype;
